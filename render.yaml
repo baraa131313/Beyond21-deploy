@@ -9,3 +9,11 @@ services:
         value: sqlite:///./app.db
       - key: JWT_SECRET
         generateValue: true
+  - type: web
+    name: beyond21-frontend
+    runtime: node
+    buildCommand: cd Frontend && npm install && npm run build
+    startCommand: cd Frontend && node server.mjs
+    envVars:
+      - key: VITE_API_URL
+        value: https://beyond21.onrender.com
